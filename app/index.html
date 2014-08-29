@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ META.project_name }} | The Texas Tribune</title>
+  <meta name="description" content="{{ META.description }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/aight/1.2.2/aight.min.js"></script>
+  <![endif]-->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+
+<header>
+  <h1>{{ META.project_name }}</h1>
+  <p>Source{{ 's' if SOURCES.length > 1 else '' }}: {% for source in SOURCES %}<a href="{{ source.url }}" target="_blank">{{ source.name }}</a> {% if not loop.last %} | {% endif %}{% endfor %}</p>
+</header>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>County</th>
+      <th>Road name</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Annual delay</th>
+      <th>Peak average speed (mph)</th>
+      <th>Uncongested average speed (mph)</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in TABLE %}
+    <tr>
+      <td data-title="Rank">{{ row['Rank'] }}</td>
+      <td data-title="County">{{ row['County'] }}</td>
+      <td data-title="Road name">{{ row['Road name'] }}</td>
+      <td data-title="From">{{ row['From'] }}</td>
+      <td data-title="To">{{ row['To'] }}</td>
+      <td data-title="Annual delay">{{ row['Annual delay'] }}</td>
+      <td data-title="Peak average speed (mph)">{{ row['Peak average speed (mph)'] }}</td>
+      <td data-title="Uncongested average speed (mph)">{{ row['Uncongested average speed (mph)'] }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({app,.tmp}) scripts/main.js -->
+<script src="scripts/main.js"></script>
+<script src="scripts/pymload.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>

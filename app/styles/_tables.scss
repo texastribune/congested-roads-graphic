@@ -1,0 +1,100 @@
+$small: new-breakpoint(max-width em(500));
+$small-to-medium: new-breakpoint(min-width em(500) max-width em(720));
+$medium: new-breakpoint(max-width em(720));
+
+table {
+  @include clearfix;
+  border-collapse: collapse;
+  font-family: $base-sans-serif;
+  font-size: em(14);
+  padding-bottom: 20px;
+  width: 100%;
+
+  @include media($medium) {
+    border-top: 1px solid rgb(187, 187, 187);
+    display: block;
+    font-size: .875em;
+  }
+}
+
+thead {
+  @include media($medium) {
+    display: none;
+  }
+}
+
+tbody {
+  @include media($medium) {
+    display: block;
+  }
+}
+
+th {
+  border-bottom: 1px solid rgb(187, 187, 187);
+  font-size: 1em;
+  font-weight: 800;
+  padding: 0 12px 8px;
+  text-align: right;
+  vertical-align: bottom;
+
+  &:first-child {
+    text-align: left;
+  }
+
+  @include media($medium) {
+    display: block;
+  }
+}
+
+td {
+  font-size: .875em;
+  padding: 8px 12px;
+  text-align: right;
+
+  &:first-child {
+    text-align: left;
+  }
+
+  @include media($medium) {
+    display: block;
+    font-weight: 300;
+    padding: 0 12px 8px;
+    text-align: left;
+
+    &:first-child {
+      padding-top: 8px;
+    }
+
+    &:before {
+      content: attr(data-title) '\A';
+      display: block;
+      font-weight: 800;
+      margin-bottom: .25em;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+tr {
+  &:nth-child(odd) td {
+    background-color: rgb(240, 240, 240);
+  }
+
+  @include media($medium) {
+    display: block;
+  }
+
+  @include media($small-to-medium) {
+    float: left;
+    width: 50%;
+
+    &:nth-child(odd) td {
+      background-color: rgb(255, 255, 255);
+    }
+
+    &:nth-child(4n),
+    &:nth-of-type(4n+1) td {
+      background-color: rgb(240, 240, 240);
+    }
+  }
+}
